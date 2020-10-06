@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
@@ -8,7 +9,7 @@ using Ubus.Business.Interfaces.Repositories;
 
 namespace Ubus.App.Controllers
 {
-    [Route("minibar")]
+    [Route("routes")]
     public class RouteController : MainController
     {
         private readonly IMapper _mapper;
@@ -46,6 +47,12 @@ namespace Ubus.App.Controllers
         public async Task<RouteViewModel> GetById(Guid id)
         {
             return _mapper.Map<RouteViewModel>(await _routeRepository.GetById(id));
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<RouteViewModel>> GetAll()
+        {
+            return _mapper.Map<IEnumerable<RouteViewModel>>(await _routeRepository.GetAll());
         }
 
     }

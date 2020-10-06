@@ -9,7 +9,7 @@ using Ubus.Business.Interfaces.Repositories;
 
 namespace Ubus.App.Controllers
 {
-    [Route("driver")]
+    [Route("drivers")]
     public class DriverController : MainController
     {
         private readonly IMapper _mapper;

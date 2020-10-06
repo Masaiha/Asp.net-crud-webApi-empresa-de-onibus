@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
@@ -48,5 +49,10 @@ namespace Ubus.App.Controllers
             return _mapper.Map<ProductViewModel>(await _productRepository.GetById(id));
         }
 
+        [HttpGet]
+        public async Task<IEnumerable<ProductViewModel>> GetAll()
+        {
+            return _mapper.Map<IEnumerable<ProductViewModel>>(await _productRepository.GetAll());
+        }
     }
 }

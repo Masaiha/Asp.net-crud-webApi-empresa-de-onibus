@@ -9,7 +9,7 @@ using Ubus.Business.Interfaces.Repositories;
 
 namespace Ubus.App.Controllers
 {
-    [Route("bus")]
+    [Route("trips")]
     public class TripController : MainController
     {
         private readonly IMapper _mapper;

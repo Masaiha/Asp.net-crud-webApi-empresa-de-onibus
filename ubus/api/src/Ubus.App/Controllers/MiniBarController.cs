@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
@@ -46,6 +47,12 @@ namespace Ubus.App.Controllers
         public async Task<MiniBarViewModel> GetById(Guid id)
         {
             return _mapper.Map<MiniBarViewModel>(await _miniBarRepository.GetById(id));
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<MiniBarViewModel>> GetAll()
+        {
+            return _mapper.Map<IEnumerable<MiniBarViewModel>>(await _miniBarRepository.GetAll());
         }
 
     }
