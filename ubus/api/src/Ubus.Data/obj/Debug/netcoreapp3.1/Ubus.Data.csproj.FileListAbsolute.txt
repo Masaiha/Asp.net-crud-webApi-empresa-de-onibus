@@ -2,3 +2,14 @@ D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\s
 D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.csprojAssemblyReference.cache
 D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.AssemblyInfoInputs.cache
 D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.AssemblyInfo.cs
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\bin\Debug\netcoreapp3.1\Ubus.Data.deps.json
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\bin\Debug\netcoreapp3.1\Ubus.Data.runtimeconfig.json
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\bin\Debug\netcoreapp3.1\Ubus.Data.runtimeconfig.dev.json
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\bin\Debug\netcoreapp3.1\Ubus.Data.dll
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\bin\Debug\netcoreapp3.1\Ubus.Data.pdb
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\bin\Debug\netcoreapp3.1\Ubus.Business.pdb
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.csproj.CoreCompileInputs.cache
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.csproj.CopyComplete
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.dll
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.pdb
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.genruntimeconfig.cache
