@@ -12,6 +12,6 @@ namespace Ubus.App.ViewModels
         [Required(ErrorMessage = MensagemDeErrosViewModel.campoObrigatirio)]
         public string Name { get; set; }
 
-        public MiniBarViewModel MiniBar { get; set; }
+        //public Additional MiniBar { get; set; }
     }
 }

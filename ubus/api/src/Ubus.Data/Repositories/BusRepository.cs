@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Ubus.Business.Entities;
 using Ubus.Business.Interfaces.Repositories;
@@ -13,11 +11,10 @@ namespace Ubus.Data.Repositories
     {
         public BusRepository(TripContext context) : base(context) { }
 
-        public async Task<IEnumerable<Bus>> GetAllBusMinibars()
+        public async Task<IEnumerable<Bus>> GetAllBusAdditionals()
         {
             var teste = await Db.Bus.AsNoTracking()
-                    .Include(x => x.MiniBar)
-                    .Include(y => y.MiniBar.Products)
+                    .Include(x => x.Additional)
                     .ToListAsync();
 
             return teste;

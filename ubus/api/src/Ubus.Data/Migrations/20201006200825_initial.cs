@@ -8,28 +8,30 @@ namespace Ubus.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Bus",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(type: "NVarchar(200)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bus", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Drives",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(type: "varchar(200)", nullable: false),
                     Age = table.Column<int>(type: "Integer", nullable: false),
-                    Cpf = table.Column<string>(type: "varchar(11)", nullable: false)
+                    Cpf = table.Column<string>(type: "varchar(11)", maxLength: 11, nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Drives", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MiniBars",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MiniBars", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -45,41 +47,23 @@ namespace Ubus.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Bus",
+                name: "Additionals",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    MiniBarId = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(type: "NVarchar(200)", nullable: false)
+                    BusId = table.Column<Guid>(nullable: false),
+                    isHasMinibar = table.Column<bool>(type: "bit", nullable: false),
+                    isHasAirConditioning = table.Column<bool>(type: "bit", nullable: false),
+                    isHasBathroom = table.Column<bool>(type: "bit", nullable: false),
+                    isHaswifi = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bus", x => x.Id);
+                    table.PrimaryKey("PK_Additionals", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Bus_MiniBars_MiniBarId",
-                        column: x => x.MiniBarId,
-                        principalTable: "MiniBars",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Products",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    MiniBarId = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(type: "Nvarchar(200)", nullable: false),
-                    brand = table.Column<string>(type: "Nvarchar(200)", nullable: false),
-                    Price = table.Column<decimal>(type: "Decimal", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Products", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Products_MiniBars_MiniBarId",
-                        column: x => x.MiniBarId,
-                        principalTable: "MiniBars",
+                        name: "FK_Additionals_Bus_BusId",
+                        column: x => x.BusId,
+                        principalTable: "Bus",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -92,9 +76,11 @@ namespace Ubus.Data.Migrations
                     DriverId = table.Column<Guid>(nullable: false),
                     BusId = table.Column<Guid>(nullable: false),
                     RouteId = table.Column<Guid>(nullable: false),
-                    StartDate = table.Column<DateTime>(type: "DateTime", nullable: false),
+                    Name = table.Column<string>(type: "varchar(200)", nullable: false),
+                    Price = table.Column<decimal>(type: "Decimal", nullable: false),
+                    Position = table.Column<string>(type: "varchar(200)", nullable: false),
+                    StartDate = table.Column<DateTime>(nullable: false),
                     EndDate = table.Column<DateTime>(type: "DateTime", nullable: false),
-                    Name = table.Column<string>(type: "NVarchar(200)", nullable: false),
                     IsFinished = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -121,14 +107,10 @@ namespace Ubus.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bus_MiniBarId",
-                table: "Bus",
-                column: "MiniBarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Products_MiniBarId",
-                table: "Products",
-                column: "MiniBarId");
+                name: "IX_Additionals_BusId",
+                table: "Additionals",
+                column: "BusId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trips_BusId",
@@ -150,7 +132,7 @@ namespace Ubus.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Additionals");
 
             migrationBuilder.DropTable(
                 name: "Trips");
@@ -163,9 +145,6 @@ namespace Ubus.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Routes");
-
-            migrationBuilder.DropTable(
-                name: "MiniBars");
         }
     }
 }

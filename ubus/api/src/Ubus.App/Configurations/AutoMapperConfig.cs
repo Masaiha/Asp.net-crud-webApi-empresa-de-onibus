@@ -9,11 +9,10 @@ namespace Ubus.App.Configurations
         public AutoMapperConfig()
         {
             CreateMap<Bus, BusViewModel>();
-            CreateMap<MiniBar, MiniBarViewModel>();
-            CreateMap<Product, ProductViewModel>();
             CreateMap<Route, RouteViewModel>();
             CreateMap<Driver, DriverViewModel>();
             CreateMap<Trip, TripViewModel>();
+            CreateMap<Additional, AdditionalViewModel>();
         }
     }
 }

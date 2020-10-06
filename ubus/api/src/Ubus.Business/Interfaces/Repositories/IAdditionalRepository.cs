@@ -2,7 +2,7 @@
 
 namespace Ubus.Business.Interfaces.Repositories
 {
-    public interface IProductRepository : IBaseRepository<Product>
+    public interface IAdditionalRepository : IBaseRepository<Additional>
     {
     }
 }

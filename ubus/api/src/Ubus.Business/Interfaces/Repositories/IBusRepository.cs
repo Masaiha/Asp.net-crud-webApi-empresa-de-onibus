@@ -7,6 +7,6 @@ namespace Ubus.Business.Interfaces.Repositories
 {
     public interface IBusRepository : IBaseRepository<Bus>
     {
-        Task<IEnumerable<Bus>> GetAllBusMinibars();
+        Task<IEnumerable<Bus>> GetAllBusAdditionals();
     }
 }

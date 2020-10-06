@@ -14,6 +14,9 @@ namespace Ubus.Data.Mappings
                 .IsRequired()
                 .HasColumnType("NVarchar(200)");
 
+            builder.HasOne(a => a.Additional)
+                .WithOne(b => b.Bus);
+
             builder.ToTable("Bus");
         }
     }

@@ -10,8 +10,8 @@ using Ubus.Data.Context;
 namespace Ubus.Data.Migrations
 {
     [DbContext(typeof(TripContext))]
-    [Migration("20201006180025_second")]
-    partial class second
+    [Migration("20201006200825_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,13 +21,39 @@ namespace Ubus.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Ubus.Business.Entities.Bus", b =>
+            modelBuilder.Entity("Ubus.Business.Entities.Additional", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("MiniBarId")
+                    b.Property<Guid>("BusId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("isHasAirConditioning")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isHasBathroom")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isHasMinibar")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isHaswifi")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BusId")
+                        .IsUnique();
+
+                    b.ToTable("Additionals");
+                });
+
+            modelBuilder.Entity("Ubus.Business.Entities.Bus", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -35,8 +61,6 @@ namespace Ubus.Data.Migrations
                         .HasColumnType("NVarchar(200)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MiniBarId");
 
                     b.ToTable("Bus");
                 });
@@ -65,44 +89,6 @@ namespace Ubus.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Drives");
-                });
-
-            modelBuilder.Entity("Ubus.Business.Entities.MiniBar", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MiniBars");
-                });
-
-            modelBuilder.Entity("Ubus.Business.Entities.Product", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("MiniBarId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("Nvarchar(200)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("Decimal");
-
-                    b.Property<string>("brand")
-                        .IsRequired()
-                        .HasColumnType("Nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MiniBarId");
-
-                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Ubus.Business.Entities.Route", b =>
@@ -140,13 +126,20 @@ namespace Ubus.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("NVarchar(200)");
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("Decimal");
 
                     b.Property<Guid>("RouteId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("DateTime");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -160,19 +153,11 @@ namespace Ubus.Data.Migrations
                     b.ToTable("Trips");
                 });
 
-            modelBuilder.Entity("Ubus.Business.Entities.Bus", b =>
+            modelBuilder.Entity("Ubus.Business.Entities.Additional", b =>
                 {
-                    b.HasOne("Ubus.Business.Entities.MiniBar", "MiniBar")
-                        .WithMany("Bus")
-                        .HasForeignKey("MiniBarId")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Ubus.Business.Entities.Product", b =>
-                {
-                    b.HasOne("Ubus.Business.Entities.MiniBar", "MiniBar")
-                        .WithMany("Products")
-                        .HasForeignKey("MiniBarId")
+                    b.HasOne("Ubus.Business.Entities.Bus", "Bus")
+                        .WithOne("Additional")
+                        .HasForeignKey("Ubus.Business.Entities.Additional", "BusId")
                         .IsRequired();
                 });
 

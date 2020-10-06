@@ -13,9 +13,7 @@ namespace Ubus.Data.Context
 
         public DbSet<Bus> Bus { get; set; }
         public DbSet<Driver> Drivers { get; set; }
-        //public DbSet<Employee> Employees { get; set; }
-        public DbSet<MiniBar> MiniBars { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Additional> Additionals { get; set; }
         public DbSet<Route> Routes { get; set; }
         public DbSet<Trip> Trips { get; set; }
 

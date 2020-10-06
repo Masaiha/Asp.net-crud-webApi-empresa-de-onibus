@@ -12,12 +12,20 @@ namespace Ubus.Data.Mappings
 
             builder.Property(t => t.Name)
                 .IsRequired()
-                .HasColumnType("NVarchar(200)");
+                .HasColumnType("varchar(200)");
 
-            builder.Property(t => t.StartDate)
+            builder.Property(t => t.Price)
+                .IsRequired()
+                .HasColumnType("Decimal");
+
+            builder.Property(t => t.Position)
+                .IsRequired()
+                .HasColumnType("varchar(200)");
+            
+            builder.Property(t => t.EndDate)
                 .IsRequired()
                 .HasColumnType("DateTime");
-
+            
             builder.Property(t => t.EndDate)
                 .IsRequired()
                 .HasColumnType("DateTime");

@@ -13,11 +13,10 @@ namespace Ubus.App.Configurations
 
             services.AddScoped<IRouteRepository, RouteRepository>();
             services.AddScoped<IBusRepository, BusRepository>();
-            services.AddScoped<IMiniBarRepository, MiniBarRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IDriverRepository, DriverRepository>();
             services.AddScoped<ITripRepository, TripRepository>();
             services.AddScoped<IRouteRepository, RouteRepository>();
+            services.AddScoped<IAdditionalRepository, AdditionalRepository>();
 
             return services;
         }
