@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
 using Ubus.Business.Interfaces.Repositories;
+using Ubus.Business.Interfaces.Services;
 
 namespace Ubus.App.Controllers
 {
@@ -13,11 +14,13 @@ namespace Ubus.App.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IBusRepository _busRepository;
+        private readonly IBusService _busService;
 
-        public BusController(IMapper mapper, IBusRepository busRepository)
+        public BusController(IMapper mapper, IBusRepository busRepository, IBusService busService)
         {
             _mapper = mapper;
             _busRepository = busRepository;
+            _busService = busService;
         }
 
         [HttpPost]
@@ -25,7 +28,7 @@ namespace Ubus.App.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(new { Message = "Ops, Algo deu errado" });
 
-            await _busRepository.Add(_mapper.Map<Bus>(busViewModel));
+            await _busService.Add(_mapper.Map<Bus>(busViewModel));
 
             return Ok();
         } 
@@ -37,7 +40,7 @@ namespace Ubus.App.Controllers
 
             if(!ModelState.IsValid) return BadRequest(new { Message = "Ops, Algo deu errado" });
 
-            await _busRepository.Update(_mapper.Map<Bus>(busViewModel));
+            await _busService.Update(_mapper.Map<Bus>(busViewModel));
 
             return Ok(busViewModel);
         }

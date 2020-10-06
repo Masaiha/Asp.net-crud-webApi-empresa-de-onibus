@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
 using Ubus.Business.Interfaces.Repositories;
+using Ubus.Business.Interfaces.Services;
 
 namespace Ubus.App.Controllers
 {
@@ -14,11 +15,13 @@ namespace Ubus.App.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ITripRepository _tripRepository;
+        private readonly ITripService _tripService;
 
-        public TripController(IMapper mapper, ITripRepository tripRepository)
+        public TripController(IMapper mapper, ITripRepository tripRepository, ITripService tripService)
         {
             _mapper = mapper;
             _tripRepository = tripRepository;
+            _tripService = tripService;
         }
 
         [HttpPost]
@@ -26,7 +29,7 @@ namespace Ubus.App.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(new { Message = "Ops, Algo deu errado" });
 
-            await _tripRepository.Add(_mapper.Map<Trip>(tripViewModel));
+            await _tripService.Add(_mapper.Map<Trip>(tripViewModel));
 
             return Ok();
         } 
@@ -38,7 +41,7 @@ namespace Ubus.App.Controllers
 
             if(!ModelState.IsValid) return BadRequest(new { Message = "Ops, Algo deu errado" });
 
-            await _tripRepository.Update(_mapper.Map<Trip>(tripViewModel));
+            await _tripService.Update(_mapper.Map<Trip>(tripViewModel));
 
             return Ok(tripViewModel);
         }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
 using Ubus.Business.Interfaces.Repositories;
+using Ubus.Business.Interfaces.Services;
 
 namespace Ubus.App.Controllers
 {
@@ -14,11 +15,13 @@ namespace Ubus.App.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IDriverRepository _driverRepository;
+        private readonly IDriverService _driverService;
 
-        public DriverController(IMapper mapper, IDriverRepository driverRepository)
+        public DriverController(IMapper mapper, IDriverRepository driverRepository, IDriverService driverService)
         {
             _mapper = mapper;
             _driverRepository = driverRepository;
+            _driverService = driverService;
         }
 
         [HttpPost]
@@ -26,7 +29,7 @@ namespace Ubus.App.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            await _driverRepository.Add(_mapper.Map<Driver>(driverViewModel));
+            await _driverService.Add(_mapper.Map<Driver>(driverViewModel));
 
             return Ok();
         }
@@ -38,7 +41,7 @@ namespace Ubus.App.Controllers
 
             if (!ModelState.IsValid) return BadRequest();
 
-            await _driverRepository.Update(_mapper.Map<Driver>(driverViewModel));
+            await _driverService.Update(_mapper.Map<Driver>(driverViewModel));
 
             return Ok();
         }
