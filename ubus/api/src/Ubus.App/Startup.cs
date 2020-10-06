@@ -31,8 +31,9 @@ namespace Ubus.App
 
             services.AddDependencyInjectionConfig();
 
-
             services.AddControllers();
+
+            services.AddSwaggerConfig();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +47,8 @@ namespace Ubus.App
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseSwaggerConfig();
 
             app.UseAuthorization();
 
