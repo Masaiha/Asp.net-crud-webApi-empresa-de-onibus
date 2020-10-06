@@ -8,7 +8,7 @@ using Ubus.Business.Interfaces.Repositories;
 
 namespace Ubus.App.Controllers
 {
-    [Route("minibar")]
+    [Route("bus")]
     public class BusController : MainController
     {
         private readonly IMapper _mapper;
@@ -43,7 +43,7 @@ namespace Ubus.App.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<BusViewModel> GetMinibarId(Guid id)
+        public async Task<BusViewModel> GetById(Guid id)
         {
             return _mapper.Map<BusViewModel>(await _busRepository.GetById(id));
         }

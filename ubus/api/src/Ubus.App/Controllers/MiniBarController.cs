@@ -43,7 +43,7 @@ namespace Ubus.App.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<MiniBarViewModel> GetMinibarId(Guid id)
+        public async Task<MiniBarViewModel> GetById(Guid id)
         {
             return _mapper.Map<MiniBarViewModel>(await _miniBarRepository.GetById(id));
         }
