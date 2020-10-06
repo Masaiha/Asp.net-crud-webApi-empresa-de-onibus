@@ -10,6 +10,6 @@ namespace Ubus.Business.Entities
         //public DateTime Start { get; set; }
         //public DateTime LastUpdated { get; set; }
         //public bool IsAdm { get; set; }
-        //public bool IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }

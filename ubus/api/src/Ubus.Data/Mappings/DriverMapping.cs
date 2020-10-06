@@ -17,6 +17,19 @@ namespace Ubus.Data.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(200)");
 
+            builder.Property(d => d.Cpf)
+                .IsRequired()
+                .HasMaxLength(11)
+                .HasColumnType("varchar(11)");
+
+            builder.Property(d => d.Age)
+                .IsRequired()
+                .HasColumnType("varchar(200)");
+
+            builder.Property(d => d.IsActive)
+                .IsRequired()
+                .HasColumnType("bit");
+
             builder.Property(d => d.Age)
                 .IsRequired()
                 .HasColumnType("Integer");
