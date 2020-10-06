@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using Ubus.App.Constantes;
 using Ubus.Business.Entities;
 
 namespace Ubus.App.ViewModels
@@ -12,30 +13,29 @@ namespace Ubus.App.ViewModels
         [Key]
         public Guid Id { get; set; }
 
-        [ScaffoldColumn(false)]
+        [JsonIgnore]
         public Guid DriverId { get; set; }
-        
-        [ScaffoldColumn(false)]
+
+        [JsonIgnore]
         public Guid BusId { get; set; }
 
-        [ScaffoldColumn(false)]
+        [JsonIgnore]
         public Guid RouteId { get; set; }
-        
+
         public DateTime StartDate { get; set; }
-        
+
         public DateTime EndDate { get; set; }
-        
+
+        [Required(ErrorMessage = MensagemDeErrosViewModel.campoObrigatirio)]
+        [StringLength(200, ErrorMessage = MensagemDeErrosViewModel.campoMaxEMinCaracteres, MinimumLength = 3)]
         public string Name { get; set; }
 
-    //    [JsonIgnore]
         public DriverViewModel Driver { get; set; }
 
-  //      [JsonIgnore]
         public RouteViewModel Route { get; set; }
 
-//        [JsonIgnore]
         public BusViewModel Bus { get; set; }
-        
+
         public bool IsFinished { get; set; }
     }
 }
