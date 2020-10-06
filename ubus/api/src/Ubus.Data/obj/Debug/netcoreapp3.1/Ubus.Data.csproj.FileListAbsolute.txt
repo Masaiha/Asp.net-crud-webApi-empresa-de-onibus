@@ -1,0 +1,4 @@
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\bin\Debug\netcoreapp3.1\Ubus.Business.dll
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.csprojAssemblyReference.cache
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.AssemblyInfoInputs.cache
+D:\Users\masan\Documents\GitHub\Asp.net-crud-webApi-empresa-de-onibus\ubus\api\src\Ubus.Data\obj\Debug\netcoreapp3.1\Ubus.Data.AssemblyInfo.cs
