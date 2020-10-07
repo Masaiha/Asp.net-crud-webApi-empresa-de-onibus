@@ -57,13 +57,13 @@ namespace Ubus.App.Controllers
         [HttpGet("{id:guid}")]
         public async Task<AdditionalViewModel> GetById(Guid id)
         {
-            return _mapper.Map<AdditionalViewModel>(await _additionalRepository.GetById(id));
+            return _mapper.Map<AdditionalViewModel>(await _additionalRepository.GetByIddditionalsBus(id));
         }
 
         [HttpGet]
         public async Task<IEnumerable<AdditionalViewModel>> GetAll()
         {
-            return _mapper.Map<IEnumerable<AdditionalViewModel>>(await _additionalRepository.GetAll());
+            return _mapper.Map<IEnumerable<AdditionalViewModel>>(await _additionalRepository.GetAllAdditionalsBus());
         }
 
     }

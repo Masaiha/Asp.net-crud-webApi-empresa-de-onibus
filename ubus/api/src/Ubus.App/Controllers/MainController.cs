@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Linq;
-using System.Web.Http.ModelBinding;
 using Ubus.Business.Interfaces.Notifications;
 using Ubus.Business.Notifications;
 
