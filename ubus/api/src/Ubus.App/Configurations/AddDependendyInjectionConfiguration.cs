@@ -25,7 +25,7 @@ namespace Ubus.App.Configurations
             services.AddScoped<IBusService, BusService>();
             services.AddScoped<IDriverService, DriverService>();
             services.AddScoped<ITripService, TripService>();
-            services.AddScoped<IAdditionalRepository, AdditionalRepository>();
+            services.AddScoped<IAdditionalService, AdditionalService>();
 
             return services;
         }

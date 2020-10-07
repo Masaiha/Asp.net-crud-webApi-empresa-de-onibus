@@ -37,7 +37,7 @@ namespace Ubus.App.Controllers
         [HttpPut("{id:guid}")]
         public async Task<ActionResult> Update(Guid id, DriverViewModel driverViewModel)
         {
-            if (id != driverViewModel.Id) return BadRequest();
+            if (id != driverViewModel.Id) return BadRequest(new { Message = "Ops, od Ids não conferem" });
 
             if (!ModelState.IsValid) return BadRequest();
 
@@ -49,11 +49,11 @@ namespace Ubus.App.Controllers
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<DriverViewModel>> GetById(Guid id)
         {
-            var driver = _driverRepository.GetById(id);
+            var driver = _mapper.Map<DriverViewModel>(await _driverRepository.GetById(id));
 
             if (driver == null) return NotFound();
 
-            return Ok(driver);
+            return driver;
         }
 
         [HttpGet]

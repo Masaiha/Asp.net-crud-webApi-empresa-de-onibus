@@ -53,7 +53,7 @@ namespace Ubus.App.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AdditionalViewModel>> GetAll(Guid id)
+        public async Task<IEnumerable<AdditionalViewModel>> GetAll()
         {
             return _mapper.Map<IEnumerable<AdditionalViewModel>>(await _additionalRepository.GetAll());
         }

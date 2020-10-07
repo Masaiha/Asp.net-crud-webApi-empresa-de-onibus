@@ -7,5 +7,7 @@ namespace Ubus.Business.Interfaces.Repositories
     public interface ITripRepository : IBaseRepository<Trip>
     {
         Task<IEnumerable<Trip>> GetAllTrips();
+
+        Task<Trip> GetByIdWithRouteDriverBus();
     }
 }

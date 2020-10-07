@@ -13,13 +13,16 @@ namespace Ubus.Data.Repositories
 
         public async Task<IEnumerable<Trip>> GetAllTrips()
         {
-            var teste = await Db.Trips.AsNoTracking()
+            return await Db.Trips.AsNoTracking()
                     .Include(t => t.Bus)
                     .Include(t => t.Driver)
                     .Include(t => t.Route)
                     .ToListAsync();
+        }
 
-            return teste;
+        public async Task<Trip> GetByIdWithRouteDriverBus()
+        {
+
         }
     }
 }

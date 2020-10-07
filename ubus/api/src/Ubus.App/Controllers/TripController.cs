@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Ubus.App.Commands.Trip;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
 using Ubus.Business.Interfaces.Repositories;
@@ -25,11 +26,13 @@ namespace Ubus.App.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Add(TripViewModel tripViewModel)
+        public async Task<ActionResult> Add(CreateTripCommand tripCommand)
         {
             if (!ModelState.IsValid) return BadRequest(new { Message = "Ops, Algo deu errado" });
 
-            await _tripService.Add(_mapper.Map<Trip>(tripViewModel));
+            var teste = _mapper.Map<Trip>(tripCommand);
+
+            await _tripService.Add(teste);
 
             return Ok();
         } 

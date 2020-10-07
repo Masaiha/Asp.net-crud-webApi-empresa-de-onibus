@@ -30,9 +30,5 @@ namespace Ubus.Business.Services
             await _repository.Update(entity);
         }
 
-        public void Dispose()
-        {
-            _repository?.Dispose();
-        }
     }
 }

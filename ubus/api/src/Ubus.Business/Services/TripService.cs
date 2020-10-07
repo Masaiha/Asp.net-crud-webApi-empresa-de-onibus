@@ -17,7 +17,17 @@ namespace Ubus.Business.Services
 
         public override async Task Add(Trip trip)
         {
+
+            // Validar se Driver existe
+            // Validar se Route existe
+            // Validar se Bus existe
+
+            // Validar se startDate != endDate
+            // Validar Preco maior que 0
+
             await _tripRepository.Add(trip);
+
+            return;
         }
 
         public override async Task Remove(Guid id)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using Ubus.App.Constantes;
-using Ubus.Business.Entities;
 
 namespace Ubus.App.ViewModels
 {
