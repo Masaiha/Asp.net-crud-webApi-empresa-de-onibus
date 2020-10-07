@@ -30,12 +30,19 @@ namespace Ubus.App.ViewModels
         [StringLength(200, ErrorMessage = MensagemDeErrosViewModel.campoMaxEMinCaracteres, MinimumLength = 3)]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = MensagemDeErrosViewModel.campoObrigatirio)]
+        public decimal Price { get; set; }
+
+        [Required(ErrorMessage = MensagemDeErrosViewModel.campoObrigatirio)]
+        public string Position { get; set; }
+
+        public bool IsFinished { get; set; }
+
         public DriverViewModel Driver { get; set; }
 
         public RouteViewModel Route { get; set; }
 
         public BusViewModel Bus { get; set; }
 
-        public bool IsFinished { get; set; }
     }
 }

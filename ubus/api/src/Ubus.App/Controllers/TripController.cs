@@ -52,13 +52,13 @@ namespace Ubus.App.Controllers
         [HttpGet("{id:guid}")]
         public async Task<TripViewModel> GetById(Guid id)
         {
-            return _mapper.Map<TripViewModel>(await _tripRepository.GetById(id));
+            return _mapper.Map<TripViewModel>(await _tripRepository.GetByIdWithRouteDriverBus(id));
         }
 
         [HttpGet]
         public async Task<IEnumerable<TripViewModel>> GetAll()
         {
-            return _mapper.Map<IEnumerable<TripViewModel>>(await _tripRepository.GetAll());
+            return _mapper.Map<IEnumerable<TripViewModel>>(await _tripRepository.GetAllTrips());
         }
 
     }

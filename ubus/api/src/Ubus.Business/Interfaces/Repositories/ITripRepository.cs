@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ubus.Business.Entities;
 
@@ -8,6 +9,6 @@ namespace Ubus.Business.Interfaces.Repositories
     {
         Task<IEnumerable<Trip>> GetAllTrips();
 
-        Task<Trip> GetByIdWithRouteDriverBus();
+        Task<Trip> GetByIdWithRouteDriverBus(Guid id);
     }
 }
