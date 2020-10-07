@@ -21,7 +21,7 @@ namespace Ubus.Data.Repositories
             DbSet = db.Set<TEntity>();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate)
+        public async Task<IEnumerable<TEntity>> FindByExpression(Expression<Func<TEntity, bool>> predicate)
         {
             return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
         }

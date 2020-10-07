@@ -14,7 +14,7 @@ namespace Ubus.Business.Interfaces.Repositories
 
         Task<TEntity> GetById(Guid id);
         Task<IEnumerable<TEntity>> GetAll();
-        Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
+        Task<IEnumerable<TEntity>> FindByExpression(Expression<Func<TEntity, bool>> predicate);
         
         Task<int> SaveChanges();
 

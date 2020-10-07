@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Ubus.Business.Interfaces.Notifications;
 using Ubus.Business.Interfaces.Repositories;
 using Ubus.Business.Interfaces.Services;
+using Ubus.Business.Notification;
 using Ubus.Business.Services;
 using Ubus.Data.Context;
 using Ubus.Data.Repositories;
@@ -26,6 +28,9 @@ namespace Ubus.App.Configurations
             services.AddScoped<IDriverService, DriverService>();
             services.AddScoped<ITripService, TripService>();
             services.AddScoped<IAdditionalService, AdditionalService>();
+
+            /* Notifications */
+            services.AddScoped<INotifier, Notifier>();
 
             return services;
         }

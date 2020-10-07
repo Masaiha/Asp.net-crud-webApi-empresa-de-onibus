@@ -30,5 +30,20 @@ namespace Ubus.Data.Repositories
                     .Include(t => t.Route)
                     .FirstOrDefaultAsync(t => t.Id == id);
         }
+
+        public async Task<IEnumerable<Trip>> GetTripByBusId(Guid id)
+        {
+            return await FindByExpression(t => t.BusId == id);
+        }
+
+        public async Task<IEnumerable<Trip>> GetTripByDriverId(Guid id)
+        {
+            return await FindByExpression(t => t.DriverId == id);
+        }
+
+        public async Task<IEnumerable<Trip>> GetTripByRoutId(Guid id)
+        {
+            return await FindByExpression(t => t.RouteId == id);
+        }
     }
 }

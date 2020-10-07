@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ubus.Business.Entities;
@@ -20,5 +21,9 @@ namespace Ubus.Data.Repositories
             return teste;
         }
 
+        public Task<IEnumerable<Bus>> GetBusByAdditionalId(Guid id)
+        {
+            return FindByExpression(b => b.Additional.Id == id);
+        }
     }
 }
