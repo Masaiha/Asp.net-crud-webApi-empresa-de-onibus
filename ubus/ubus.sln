@@ -7,11 +7,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{B121E8BB-72F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{D5EEE36A-A9EB-472D-8435-191E30710A5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ubus.App", "api\src\Ubus.App\Ubus.App.csproj", "{3A7DF443-24B0-4FB0-8E38-E765FF28DFBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ubus.App", "api\src\Ubus.App\Ubus.App.csproj", "{3A7DF443-24B0-4FB0-8E38-E765FF28DFBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ubus.Business", "api\src\Ubus.Business\Ubus.Business.csproj", "{C074B1C4-D064-4BAF-8FD2-CF3D94BCD5E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ubus.Business", "api\src\Ubus.Business\Ubus.Business.csproj", "{C074B1C4-D064-4BAF-8FD2-CF3D94BCD5E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ubus.Data", "api\src\Ubus.Data\Ubus.Data.csproj", "{7C47BA38-9CF2-40FA-97C2-2EBF75F7CD6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ubus.Data", "api\src\Ubus.Data\Ubus.Data.csproj", "{7C47BA38-9CF2-40FA-97C2-2EBF75F7CD6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ubus.Application", "app\src\Ubus.Application\Ubus.Application.csproj", "{DDB749D4-02B0-4CBE-B3F2-4C3A97EEFC1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ubus.Application.Business", "app\src\Ubus.Application.Business\Ubus.Application.Business.csproj", "{5E97F626-15DC-4596-AF85-F90E133A1A7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ubus.Application.Data", "app\src\Ubus.Application.Data\Ubus.Application.Data.csproj", "{EF126B29-F3CB-4249-AF99-B98D33ED145E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +37,18 @@ Global
 		{7C47BA38-9CF2-40FA-97C2-2EBF75F7CD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C47BA38-9CF2-40FA-97C2-2EBF75F7CD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C47BA38-9CF2-40FA-97C2-2EBF75F7CD6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB749D4-02B0-4CBE-B3F2-4C3A97EEFC1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB749D4-02B0-4CBE-B3F2-4C3A97EEFC1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB749D4-02B0-4CBE-B3F2-4C3A97EEFC1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB749D4-02B0-4CBE-B3F2-4C3A97EEFC1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E97F626-15DC-4596-AF85-F90E133A1A7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E97F626-15DC-4596-AF85-F90E133A1A7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E97F626-15DC-4596-AF85-F90E133A1A7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E97F626-15DC-4596-AF85-F90E133A1A7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF126B29-F3CB-4249-AF99-B98D33ED145E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF126B29-F3CB-4249-AF99-B98D33ED145E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF126B29-F3CB-4249-AF99-B98D33ED145E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF126B29-F3CB-4249-AF99-B98D33ED145E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +57,9 @@ Global
 		{3A7DF443-24B0-4FB0-8E38-E765FF28DFBD} = {B121E8BB-72FD-4752-9D30-0F739304EC1C}
 		{C074B1C4-D064-4BAF-8FD2-CF3D94BCD5E8} = {B121E8BB-72FD-4752-9D30-0F739304EC1C}
 		{7C47BA38-9CF2-40FA-97C2-2EBF75F7CD6A} = {B121E8BB-72FD-4752-9D30-0F739304EC1C}
+		{DDB749D4-02B0-4CBE-B3F2-4C3A97EEFC1A} = {D5EEE36A-A9EB-472D-8435-191E30710A5B}
+		{5E97F626-15DC-4596-AF85-F90E133A1A7F} = {D5EEE36A-A9EB-472D-8435-191E30710A5B}
+		{EF126B29-F3CB-4249-AF99-B98D33ED145E} = {D5EEE36A-A9EB-472D-8435-191E30710A5B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {00C36F02-A956-404E-8AAE-8E7BBA1F6815}
