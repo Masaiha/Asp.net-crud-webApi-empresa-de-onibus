@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Ubus.App.Commands.Trip;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
+using Ubus.Business.Interfaces.Notifications;
 using Ubus.Business.Interfaces.Repositories;
 using Ubus.Business.Interfaces.Services;
 
@@ -18,7 +19,10 @@ namespace Ubus.App.Controllers
         private readonly ITripRepository _tripRepository;
         private readonly ITripService _tripService;
 
-        public TripController(IMapper mapper, ITripRepository tripRepository, ITripService tripService)
+        public TripController(IMapper mapper, 
+                              ITripRepository tripRepository, 
+                              ITripService tripService, 
+                              INotifier notifier) : base(notifier)
         {
             _mapper = mapper;
             _tripRepository = tripRepository;
@@ -28,25 +32,29 @@ namespace Ubus.App.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(CreateTripCommand tripCommand)
         {
-            if (!ModelState.IsValid) return BadRequest(new { Message = "Ops, Algo deu errado" });
+            if (!ModelState.IsValid) return CustomResponse(tripCommand);
 
             var teste = _mapper.Map<Trip>(tripCommand);
 
             await _tripService.Add(teste);
 
-            return Ok();
+            return CustomResponse(tripCommand);
         } 
 
         [HttpPut("{id:guid}")]
         public async Task<ActionResult> Update(Guid id, TripViewModel tripViewModel)
         {
-            if (tripViewModel.Id != id) return BadRequest(new { Message = "Ops, od Ids não conferem" });
+            if (tripViewModel.Id != id)
+            {
+                NotifierError("Ops, od Ids não conferem");
+                return CustomResponse();
+            }
 
-            if(!ModelState.IsValid) return BadRequest(new { Message = "Ops, Algo deu errado" });
+            if (!ModelState.IsValid) return CustomResponse();
 
             await _tripService.Update(_mapper.Map<Trip>(tripViewModel));
 
-            return Ok(tripViewModel);
+            return CustomResponse(tripViewModel);
         }
 
         [HttpGet("{id:guid}")]

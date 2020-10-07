@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
+using Ubus.Business.Interfaces.Notifications;
 using Ubus.Business.Interfaces.Repositories;
 using Ubus.Business.Interfaces.Services;
 
@@ -17,7 +18,10 @@ namespace Ubus.App.Controllers
         private readonly IDriverRepository _driverRepository;
         private readonly IDriverService _driverService;
 
-        public DriverController(IMapper mapper, IDriverRepository driverRepository, IDriverService driverService)
+        public DriverController(IMapper mapper, 
+                                IDriverRepository driverRepository, 
+                                IDriverService driverService,
+                                INotifier notifier) : base(notifier)
         {
             _mapper = mapper;
             _driverRepository = driverRepository;
@@ -27,23 +31,27 @@ namespace Ubus.App.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(DriverViewModel driverViewModel)
         {
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return CustomResponse(driverViewModel);
 
             await _driverService.Add(_mapper.Map<Driver>(driverViewModel));
 
-            return Ok();
+            return CustomResponse(driverViewModel);
         }
 
         [HttpPut("{id:guid}")]
         public async Task<ActionResult> Update(Guid id, DriverViewModel driverViewModel)
         {
-            if (id != driverViewModel.Id) return BadRequest(new { Message = "Ops, od Ids não conferem" });
+            if (id != driverViewModel.Id)
+            {
+                NotifierError("Ops, od Ids não conferem");
+                return CustomResponse();
+            }
 
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return CustomResponse();
 
             await _driverService.Update(_mapper.Map<Driver>(driverViewModel));
 
-            return Ok();
+            return CustomResponse(driverViewModel);
         }
 
         [HttpGet("{id:guid}")]

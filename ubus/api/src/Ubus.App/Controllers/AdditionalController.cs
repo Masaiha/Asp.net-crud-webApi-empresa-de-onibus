@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Ubus.App.ViewModels;
 using Ubus.Business.Entities;
+using Ubus.Business.Interfaces.Notifications;
 using Ubus.Business.Interfaces.Repositories;
 using Ubus.Business.Interfaces.Services;
 
@@ -17,7 +18,10 @@ namespace Ubus.App.Controllers
         private readonly IAdditionalRepository _additionalRepository;
         private readonly IAdditionalService _additionalService;
 
-        public AdditionalController(IMapper mapper, IAdditionalRepository additionalRepository, IAdditionalService additionalService)
+        public AdditionalController(IMapper mapper, 
+                                    IAdditionalRepository additionalRepository, 
+                                    IAdditionalService additionalService,
+                                    INotifier notifier) : base(notifier)
         {
             _mapper = mapper;
             _additionalRepository = additionalRepository;
@@ -27,23 +31,27 @@ namespace Ubus.App.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(AdditionalViewModel additionalViewModel)
         {
-            if (!ModelState.IsValid) return BadRequest(new { Message = "Ops, Algo deu errado" });
+            if (!ModelState.IsValid) return CustomResponse(additionalViewModel);
 
             await _additionalService.Add(_mapper.Map<Additional>(additionalViewModel));
 
-            return Ok();
+            return CustomResponse(additionalViewModel);
         } 
 
         [HttpPut("{id:guid}")]
         public async Task<ActionResult> Update(Guid id, AdditionalViewModel additionalViewModel)
         {
-            if (additionalViewModel.Id != id) return BadRequest(new { Message = "Ops, od Ids não conferem" });
+            if (additionalViewModel.Id != id)
+            {
+                NotifierError("Ops, od Ids não conferem");
+                return CustomResponse();
+            }
 
-            if(!ModelState.IsValid) return BadRequest(new { Message = "Ops, Algo deu errado" });
+            if (!ModelState.IsValid) return CustomResponse(additionalViewModel);
 
             await _additionalService.Update(_mapper.Map<Additional>(additionalViewModel));
 
-            return Ok(additionalViewModel);
+            return CustomResponse(additionalViewModel);
         }
 
         [HttpGet("{id:guid}")]
