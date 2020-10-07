@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Ubus.Application.Models;
+using Ubus.Application.ViewModels;
 
 namespace Ubus.Application.Controllers
 {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Ubus.Application.Models
+namespace Ubus.Application.ViewModels
 {
     public class ErrorViewModel
     {
