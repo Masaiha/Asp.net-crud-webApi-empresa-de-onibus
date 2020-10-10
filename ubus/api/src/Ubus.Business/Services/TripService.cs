@@ -39,13 +39,13 @@ namespace Ubus.Business.Services
         public override async Task Remove(Guid id)
         {
             var trip = _tripRepository.GetById(id);
-            var driver = _driverRepository.GetById(trip.Result.Driver.Id);
+            //var driver = _driverRepository.GetById(trip.Result.Driver.Id);
             var bus = _driverRepository.GetById(trip.Result.Bus.Id);
             var route = _driverRepository.GetById(trip.Result.Route.Id);
 
             string msgError = "Ops! não foi possível excluir essa viagem, pois Há";
 
-            if(driver != null) { Notifier($"{msgError} um morotista vinculado"); return; };
+            //if(driver != null) { Notifier($"{msgError} um morotista vinculado"); return; };
             if (bus != null) { Notifier($"{msgError} um ônibus vinculado"); return; };
             if (route != null) { Notifier($"{msgError} uma rota vinculada"); return; };
 
@@ -61,14 +61,19 @@ namespace Ubus.Business.Services
             await _tripRepository.Update(trip);
         }
 
+        public async Task UpdateAllTripsFinished()
+        {
+            _tripRepository.UpdateAllTripsFinished();
+        }
+
         private void DependenciesValidation(Trip trip)
         {
-            var driver = _driverRepository.GetById(trip.Driver.Id);
+            //var driver = _driverRepository.GetById(trip.Driver.Id);
             var bus = _busRepository.GetById(trip.Bus.Id);
             var route = _routeRepository.GetById(trip.Route.Id);
             string msgError = "Ops! Não foi possível adidionar uma nova viagem, confira os dados";
 
-            if (driver == null) { Notifier($"{msgError} do motorista"); return; };
+            //if (driver == null) { Notifier($"{msgError} do motorista"); return; };
             if (bus == null) { Notifier($"{msgError}  do ônibus"); return; };
             if (route == null) { Notifier($"{msgError}  da rota"); return; };
             if (trip.EndDate <= trip.StartDate) { Notifier("A data de fechamento da viagem não pode ser menor ou igual à data de abertura"); return; };

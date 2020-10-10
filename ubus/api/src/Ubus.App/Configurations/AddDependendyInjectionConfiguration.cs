@@ -16,18 +16,19 @@ namespace Ubus.App.Configurations
             services.AddScoped<TripContext>();
 
             /* Repositories */
-            services.AddScoped<IRouteRepository, RouteRepository>();
+            services.AddScoped<IAdditionalRepository, AdditionalRepository>();
             services.AddScoped<IBusRepository, BusRepository>();
             services.AddScoped<IDriverRepository, DriverRepository>();
+            services.AddScoped<IRouteRepository, RouteRepository>();
+            services.AddScoped<ITripDriverRepository, TripDriverRepository>();
             services.AddScoped<ITripRepository, TripRepository>();
-            services.AddScoped<IAdditionalRepository, AdditionalRepository>();
 
             /* Services */
-            services.AddScoped<IRouteService, RouteService>();
+            services.AddScoped<IAdditionalService, AdditionalService>();
             services.AddScoped<IBusService, BusService>();
             services.AddScoped<IDriverService, DriverService>();
+            services.AddScoped<IRouteService, RouteService>();
             services.AddScoped<ITripService, TripService>();
-            services.AddScoped<IAdditionalService, AdditionalService>();
 
             /* Notifications */
             services.AddScoped<INotifier, Notifier>();

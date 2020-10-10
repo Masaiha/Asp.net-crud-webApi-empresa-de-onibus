@@ -30,8 +30,8 @@ namespace Ubus.Data.Mappings
                 .IsRequired()
                 .HasColumnType("DateTime");
 
-            builder.HasOne(t => t.Driver)
-                .WithOne(d => d.Trip);
+            //builder.HasOne(t => t.Driver)
+            //    .WithOne(d => d.Trip);
 
             builder.HasOne(t => t.Route)
                 .WithMany(r => r.Trips)

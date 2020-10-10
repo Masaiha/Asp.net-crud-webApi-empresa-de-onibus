@@ -14,9 +14,11 @@ namespace Ubus.App.Configurations
             CreateMap<Driver, DriverViewModel>().ReverseMap();
             CreateMap<Trip, TripViewModel>().ReverseMap();
             CreateMap<Additional, AdditionalViewModel>().ReverseMap();
+            CreateMap<TripDriver, TripDriverViewModel>().ReverseMap();
+            CreateMap<TripWithDriverName, TripWithDriverNameViewModel>().ReverseMap();
 
-            CreateMap<Trip, CreateTripCommand>();
-            CreateMap<CreateTripCommand, Trip>();
+            CreateMap<Trip, CreateTripCommand>().ReverseMap();
+            CreateMap<TripDriver, CreateTripDriverCommand>().ReverseMap();
         }
     }
 }

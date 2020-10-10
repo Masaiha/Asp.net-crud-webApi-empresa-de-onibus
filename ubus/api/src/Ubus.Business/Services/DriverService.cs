@@ -29,13 +29,13 @@ namespace Ubus.Business.Services
 
         public override async Task Remove(Guid id)
         {
-            var trip = await _tripRepository.GetTripByDriverId(id);
+            //var trip = await _tripRepository.GetTripByDriverId(id);
 
-            if (trip.Count() <= 0)
-            {
-                Notifier("Não foi possível excluir esse motorista, pois há uma Viagem com o mesmo");
-                return;
-            }
+            //if (trip.Count() <= 0)
+            //{
+            //    Notifier("Não foi possível excluir esse motorista, pois há uma Viagem com o mesmo");
+            //    return;
+            //}
 
             await _driverRepository.Remove(id);
         }

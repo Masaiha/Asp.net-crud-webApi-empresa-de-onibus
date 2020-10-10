@@ -17,6 +17,8 @@ namespace Ubus.Data.Context
         public DbSet<Route> Routes { get; set; }
         public DbSet<Trip> Trips { get; set; }
 
+        public DbSet<TripDriver> TripDrivers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var property in modelBuilder.Model.GetEntityTypes()

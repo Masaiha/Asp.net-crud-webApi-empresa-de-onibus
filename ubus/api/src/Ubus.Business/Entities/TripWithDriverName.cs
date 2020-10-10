@@ -2,9 +2,8 @@
 
 namespace Ubus.Business.Entities
 {
-    public class Trip : Entity
+    public class TripWithDriverName : Entity
     {
-        //public Guid DriverId { get; set; }
         public Guid BusId { get; set; }
         public Guid RouteId { get; set; }
 
@@ -14,10 +13,9 @@ namespace Ubus.Business.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        //public Driver Driver { get; set; }
+        public Driver? Driver { get; set; }
         public Route Route { get; set; }
         public Bus Bus { get; set; }
-        public TripDriver TripDriver { get; set; }
 
         public bool IsFinished { get; set; }
     }
